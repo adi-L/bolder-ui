@@ -1,5 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, css } from 'lit';
+const tinycolor = require("tinycolor2");
 
 @customElement(`ripple-bolder`)
 class Ripple extends LitElement {
@@ -7,19 +8,25 @@ class Ripple extends LitElement {
   constructor() {
     super();
     this.addEventListener('click', ({ clientX, clientY }) => {
+      debugger
+      let _bgColor = this.color;
+      let _borderRadius = "0";
+      if (!this.color && this.firstElementChild) {
+        const { backgroundColor, borderRadius } = window.getComputedStyle(this.firstElementChild);
+        _bgColor = resloveStyles(backgroundColor);
+        _borderRadius = borderRadius;
+      }
       const diameter = Math.max(this.clientWidth, this.clientHeight);
       const radius = diameter / 2;
-      debugger
-      if(!this.parentElement) return;
-      // this.width = this.height = `${diameter}px`;
-      const bound = this.parentElement.getBoundingClientRect();
+      const bound = this.getBoundingClientRect();
       const left = `${clientX - bound.x - radius}`;
       const top = `${clientY - bound.top - radius}`;
       const theRipple = document.createElement("span");
       theRipple.style.width = bound.width + "px";
-      theRipple.style.height = bound.height + "px";
+      theRipple.style.height = diameter + "px";
       theRipple.style.animationDuration = this.duration;
-      theRipple.style.background = this.color;
+      theRipple.style.background = _bgColor;
+      this.style.borderRadius = _borderRadius;
       theRipple.style.left = left + "px";
       theRipple.style.top = top + "px";
       if (this.shadowRoot) {
@@ -35,13 +42,13 @@ class Ripple extends LitElement {
   static get styles() {
     return css`
     :host{
-      height:100% ;
-      width:100%;
+      box-sizing: border-box;
       position: absolute;
       display: inline-block;
       overflow: hidden;
-      left: 0;
-      top:0;
+      left: 50%;
+      top:50%;
+      transform:translate(-50%,-50%)
     }
     span {
         position: absolute;
@@ -57,17 +64,28 @@ class Ripple extends LitElement {
         }
       }
       @keyframes ripple-effect {
-        to {
+        75% {
           transform: scale(4);
           opacity: 1;
+        }
+        100%{
+          transform: scale(5);
+          opacity: 0;
         }
   }`;
   }
   @property()
-  color = "rgba(226, 221, 221, 0.281)";
+  color = "";
   duration = "600ms";
   render() {
     return html`<slot />`;
   }
+}
+function resloveStyles(bgColor: string) {
+  const color = tinycolor(bgColor);
+  const rippleColorHsl = color.toHsl();
+  rippleColorHsl.a = rippleColorHsl.a + .2;
+  const rippleColor = tinycolor(rippleColorHsl).toHslString();
+  return rippleColor;
 }
 export default Ripple;

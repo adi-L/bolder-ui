@@ -5,10 +5,12 @@ import { LitElement, html, css } from 'lit';
 class Navbar extends LitElement {
   static get styles() {
     return css`.main{
+      min-height: 30px;
+      box-sizing: border-box;
       width: 100% ;
       transition: margin 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,width 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
       background: #f5f5f5;
-      padding: 0px 10px;
+      padding:0;
       top: 0;
     left: auto;
     right: 0;
@@ -19,9 +21,10 @@ class Navbar extends LitElement {
     display:flex;
     align-items:center;
   } ul{
+    box-sizing: border-box;
     display: block;
     list-style-type: none;
-    margin-block-start: .2rem;
+    margin-block-start: 0;
     margin-block-end: 0;
     margin-inline-start: 0px;
     margin-inline-end: 0px;

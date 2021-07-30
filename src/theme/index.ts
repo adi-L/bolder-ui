@@ -37,9 +37,9 @@ const theme: ThemeConfig = {
             padding: ".375rem .95rem",
             lineHeight: 1.5,
             background: "transparent",
-            boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
+            boxShadow: "",
             "&hover": {
-                boxShadow: "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)"
+                boxShadow: ""
             }
         }
     },

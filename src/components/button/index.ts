@@ -2,8 +2,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import theme from '../../theme';
 import btnCSS from '../../props/button';
-
-var tinycolor = require("tinycolor2");
+const  tinycolor = require("tinycolor2");
 @customElement(`btn-bolder`)
 class Button extends LitElement {
   constructor() {
@@ -15,6 +14,7 @@ class Button extends LitElement {
     button{
       ${btnCSS};
       background-color:${unsafeCSS(stylesProps.background)};
+      border-color:${unsafeCSS(stylesProps.background)};
       font-family:${unsafeCSS(stylesProps.fontFamily)};
       padding:${unsafeCSS(stylesProps.padding)};
       line-height: ${unsafeCSS(stylesProps.lineHeight)};
@@ -33,17 +33,20 @@ class Button extends LitElement {
 
   render() {
     const fullWidth = this.getAttribute("fullWidth");
-    const {bgColor,rippleColor} = resloveStyles();
+    const { bgColor } = resloveStyles();
     return html`
-      <button style="width:${fullWidth !== null ?"100%" : "auto"}">
+      
+        <ripple-bolder>
+        <button style="width:${fullWidth !== null ? "100%" : "auto"}">
         <slot></slot>
-        <ripple-bolder color="${rippleColor}"/>
         <style>
             button:hover {
           background-color:${bgColor};
         }
         </style>
       </button>
+      </ripple-bolder>
+ 
     `;
   }
 }
@@ -53,11 +56,8 @@ function resloveStyles() {
   const stylesProps = theme.button.props;
   const color = tinycolor(stylesProps.background);
   const bgColorHsl = color.toHsl();
-  const rippleColorHsl = color.toHsl();
-  rippleColorHsl.a = rippleColorHsl.a + .2;
   bgColorHsl.a = bgColorHsl.a + .1;
-  const rippleColor = tinycolor(rippleColorHsl).toHslString();
   const bgColor = tinycolor(bgColorHsl).toHslString();
-  return {bgColor,rippleColor};
+  return { bgColor };
 }
 

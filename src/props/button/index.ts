@@ -1,6 +1,6 @@
 import { css } from 'lit';
 const btnCSS = css`
-     min-height: 10px;
+      min-height: 10px;
       position: relative;
       display: inline-block;
       font-weight: 400;
@@ -13,6 +13,7 @@ const btnCSS = css`
       -ms-user-select: none;
       user-select: none;
       border: 1px solid transparent;
+      box-sizing: border-box;
       button:disabled{
      opacity: .3;
   }

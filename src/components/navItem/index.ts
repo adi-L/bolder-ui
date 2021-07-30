@@ -17,17 +17,18 @@ class NavbarItem extends LitElement {
             display: list-item;
             text-align: -webkit-match-parent;
             font-family:${unsafeCSS(stylesProps.fontFamily)};
-      padding:${unsafeCSS(stylesProps.padding)};
-      line-height: ${unsafeCSS(stylesProps.lineHeight)};
-      font-size:${unsafeCSS(stylesProps.fontSize)};
+            padding:${unsafeCSS(stylesProps.padding)};
+            line-height: ${unsafeCSS(stylesProps.lineHeight)};
+            font-size:${unsafeCSS(stylesProps.fontSize)};
   }`;
   }
   @property()
-  
+
   render() {
     return html`
+      <ripple-bolder >
       <slot></slot>
-      <ripple-bolder/>
+      </ripple-bolder>
     `;
   }
 }
