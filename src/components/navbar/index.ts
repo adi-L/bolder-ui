@@ -12,8 +12,9 @@ class Navbar extends LitElement {
       top: 0;
     left: auto;
     right: 0;
-    position: fixed;
-    box-shadow:0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    position: relative;
+    border-bottom:1px solid #80808017;
+    /* box-shadow:0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%); */
     list-style-type: none;
     display:flex;
     align-items:center;

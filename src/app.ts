@@ -8,6 +8,14 @@ class MyElement extends LitElement {
 
     render() {
         return html`
+        <navbar-bolder >
+            <nav-item>
+                help
+            </nav-item>
+            <nav-item>
+                test
+            </nav-item>
+        </navbar-bolder>
         <navbar-bolder>
             <nav-item>
                 help

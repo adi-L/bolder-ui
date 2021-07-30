@@ -9,8 +9,10 @@ class Ripple extends LitElement {
     this.addEventListener('click', ({ clientX, clientY }) => {
       const diameter = Math.max(this.clientWidth, this.clientHeight);
       const radius = diameter / 2;
+      debugger
+      if(!this.parentElement) return;
       // this.width = this.height = `${diameter}px`;
-      const bound = this.getBoundingClientRect();
+      const bound = this.parentElement.getBoundingClientRect();
       const left = `${clientX - bound.x - radius}`;
       const top = `${clientY - bound.top - radius}`;
       const theRipple = document.createElement("span");
@@ -43,7 +45,7 @@ class Ripple extends LitElement {
     }
     span {
         position: absolute;
-        border-radius: 100%;
+        border-radius: 50%;
         transform: scale(0);
         animation: ripple-effect 600ms linear;
         -webkit-animation: ripple-effect 600ms linear;
