@@ -9,10 +9,4 @@ export default class Example {
         }
     }
 }
-const standAlone = {
-    button: require('./components/button'),
-    ripple: require('./components/ripple'),
-    navbar: require('./components/navbar'),
-    navItem: require('./components/navItem')
-}
-export { standAlone };
+

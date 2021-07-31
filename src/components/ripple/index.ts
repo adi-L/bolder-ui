@@ -43,12 +43,9 @@ class Ripple extends LitElement {
     return css`
     :host{
       box-sizing: border-box;
-      position: absolute;
       display: inline-block;
       overflow: hidden;
-      left: 50%;
-      top:50%;
-      transform:translate(-50%,-50%)
+      position:relative;
     }
     span {
         position: absolute;
@@ -72,6 +69,7 @@ class Ripple extends LitElement {
           transform: scale(5);
           opacity: 0;
         }
+        
   }`;
   }
   @property()
@@ -84,7 +82,7 @@ class Ripple extends LitElement {
 function resloveStyles(bgColor: string) {
   const color = tinycolor(bgColor);
   const rippleColorHsl = color.toHsl();
-  rippleColorHsl.a = rippleColorHsl.a + .2;
+  rippleColorHsl.a = rippleColorHsl.a + .1;
   const rippleColor = tinycolor(rippleColorHsl).toHslString();
   return rippleColor;
 }
