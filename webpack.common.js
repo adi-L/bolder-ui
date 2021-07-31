@@ -1,14 +1,17 @@
 const pkg = require('./package.json');
+const path = require("path");
+
 
 module.exports = (env, argv) => {
   return {
-    entry: `./index.js`,
+   
     output: {
-      filename: `${pkg.name}.js`,
+      filename: `[name].bundle.js`,
       library: pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1),//TODO use function
       globalObject: '(typeof self !== \'undefined\' ? self : this)', // TODO Hack (for Webpack 4+) to enable create UMD build which can be required by Node without throwing error for window being undefined (https://github.com/webpack/webpack/issues/6522)
       umdNamedDefine: true,
       libraryTarget: 'umd',
+      path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
     ],

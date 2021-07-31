@@ -4,14 +4,22 @@ const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env, argv) => {
     return merge(common(env, argv), {
+        entry: {
+            button:"./exports/button",
+            navbar:"./exports/navbar"
+          },
         output: {
             path: `${__dirname}/dist/`,
             publicPath: "./dist/"
         },
         mode: 'production',
+        target:"node",
+        externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+        devtool:"eval-nosources-cheap-source-map",
         cache: true,
         optimization: {
             minimize: true,
