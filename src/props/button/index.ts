@@ -1,11 +1,13 @@
 import { css } from 'lit';
 const btnCSS = css`
+      button{
       min-height: 10px;
       position: relative;
       display: inline-block;
       font-weight: 400;
       text-align: center;
       white-space: nowrap;
+      background-color:inherit  ;
       cursor:pointer;
       vertical-align: middle;
       -webkit-user-select: none;
@@ -14,6 +16,7 @@ const btnCSS = css`
       user-select: none;
       border: 1px solid transparent;
       box-sizing: border-box;
+      }
       button:disabled{
      opacity: .3;
   }

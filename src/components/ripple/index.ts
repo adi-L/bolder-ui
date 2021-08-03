@@ -2,17 +2,17 @@ import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, css } from 'lit';
 const tinycolor = require("tinycolor2");
 
-@customElement(`ripple-bolder`)
+@customElement(`bolder-ripple`)
 class Ripple extends LitElement {
 
   constructor() {
     super();
     this.addEventListener('click', ({ clientX, clientY }) => {
-      debugger
       let _bgColor = this.color;
       let _borderRadius = "0";
-      if (!this.color && this.firstElementChild) {
-        const { backgroundColor, borderRadius } = window.getComputedStyle(this.firstElementChild);
+
+      if (!this.color && this.parentElement) {
+        const { backgroundColor, borderRadius } = window.getComputedStyle(this.parentElement);
         _bgColor = resloveStyles(backgroundColor);
         _borderRadius = borderRadius;
       }
@@ -45,7 +45,11 @@ class Ripple extends LitElement {
       box-sizing: border-box;
       display: inline-block;
       overflow: hidden;
-      position:relative;
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      width:100%;
     }
     span {
         position: absolute;

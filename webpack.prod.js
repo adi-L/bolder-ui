@@ -13,8 +13,8 @@ module.exports = (env, argv) => {
             navbar:"./exports/navbar"
           },
         output: {
-            path: `${__dirname}/dist/`,
-            publicPath: "./dist/"
+            path: `${__dirname}/dist/production/scripts`,
+            publicPath: "./dist/production/scripts"
         },
         mode: 'production',
         target:"node",

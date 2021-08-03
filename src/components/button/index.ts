@@ -1,9 +1,10 @@
+//no-missing-import
 import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import theme from '../../theme';
 import btnCSS from '../../props/button';
-const  tinycolor = require("tinycolor2");
-@customElement(`btn-bolder`)
+const tinycolor = require("tinycolor2");
+@customElement(`bolder-button`)
 class Button extends LitElement {
   constructor() {
     super();
@@ -11,8 +12,8 @@ class Button extends LitElement {
   static get styles() {
     const stylesProps = theme.button.props;
     return css`
+    ${btnCSS}
     button{
-      ${btnCSS};
       background-color:${unsafeCSS(stylesProps.background)};
       border-color:${unsafeCSS(stylesProps.background)};
       font-family:${unsafeCSS(stylesProps.fontFamily)};
@@ -29,23 +30,24 @@ class Button extends LitElement {
   `
   }
   @property()
-  hasFocus = false;
-
+  hasFocus = "";
+  fullWidth = "";
   render() {
-    const fullWidth = this.getAttribute("fullWidth");
     const { bgColor } = resloveStyles();
     return html`
-      
-        <ripple-bolder>
-        <button style="width:${fullWidth !== null ? "100%" : "auto"}">
+        <button>
+        ${this.fullWidth}
         <slot></slot>
-        <style>
+        <bolder-ripple></bolder-ripple>
+      </button>
+      <style>
+            button{
+              width:${this.fullWidth ? "100%" : "auto"}
+            }
             button:hover {
           background-color:${bgColor};
         }
         </style>
-      </button>
-      </ripple-bolder>
  
     `;
   }

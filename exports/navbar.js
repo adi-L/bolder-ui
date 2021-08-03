@@ -1,4 +1,4 @@
 import '../src/components/navbar';
 
-const navbar =  'navbar-bolder'
+const navbar =  'bolder-navbar'
 export default navbar

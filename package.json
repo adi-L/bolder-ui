@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "files": [
+    "production/dist/",
+    "production/lib/"
+  ],
   "private": true,
   "scripts": {
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config  webpack.prod.js",
+    "build:umdmin": "webpack --config webpack.prod.js --env target=umd",
+    "build:commonjs": "webpack --config webpack.dev.js --env target=commonjs2",
+    "build": "npm-run-all build:*",
     "start": "webpack-dev-server  --open --config webpack.dev.js"
   },
   "keywords": [

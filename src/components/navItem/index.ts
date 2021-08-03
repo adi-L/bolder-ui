@@ -3,13 +3,12 @@ import { LitElement, html, css, unsafeCSS } from 'lit';
 import btnCSS from '../../props/button';
 import theme from '../../theme';
 
-@customElement(`nav-item`)
+@customElement(`bolder-nav-item`)
 class NavbarItem extends LitElement {
   static get styles() {
     const stylesProps = theme.navItem.props;
     return css`
     :host{
-            ${btnCSS};
             list-style-type: none;
             float: left !important;
             margin-right:.5rem;
@@ -20,15 +19,17 @@ class NavbarItem extends LitElement {
             padding:${unsafeCSS(stylesProps.padding)};
             line-height: ${unsafeCSS(stylesProps.lineHeight)};
             font-size:${unsafeCSS(stylesProps.fontSize)};
-  }`;
+  }
+  ${btnCSS};`;
   }
   @property()
 
   render() {
     return html`
-      <ripple-bolder >
+      <button>
       <slot></slot>
-      </ripple-bolder>
+      <bolder-ripple></bolder-ripple>
+      </button>
     `;
   }
 }

@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, css } from 'lit';
 
-@customElement(`navbar-bolder`)
+@customElement(`bolder-navbar`)
 class Navbar extends LitElement {
   static get styles() {
     return css`.main{

@@ -1,6 +1,14 @@
 export interface ThemeConfig {
     primary: string,
     secondary: string,
+    input:{
+        props:{
+            fontSize: string | number;
+            borderRadius: string | number;
+            height: string | number;
+            fontFamily: string;
+        }
+    },
     button: {
         props: {
             borderRadius: string | number;
@@ -29,6 +37,14 @@ export interface ThemeConfig {
 const theme: ThemeConfig = {
     primary: "blue",
     secondary: "red",
+    input:{
+        props:{
+            fontSize: ".8rem",
+            borderRadius: ".25rem",
+            height:"30px",
+            fontFamily: "Arial",
+        }
+    },
     button: {
         props: {
             borderRadius: ".25rem",

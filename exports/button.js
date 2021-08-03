@@ -1,4 +1,4 @@
 import '../src/components/button';
 import '../src/components/ripple';
-const button =  'btn-bolder'
+const button =  'bolder-button'
 export default button
